@@ -44,6 +44,7 @@ const options = reactive<OptionState>({
           <button
             :class="{'option-active': options.gender === Gender.BOY}"
             class="option"
+            @click="options.gender = Gender.BOY"
           >
             Boy
           </button>
@@ -51,6 +52,7 @@ const options = reactive<OptionState>({
           <button
             :class="{'option-active': options.gender === Gender.UNISEX}"
             class="option"
+            @click="options.gender = Gender.UNISEX"
           >
             Unisex
           </button>
@@ -58,6 +60,7 @@ const options = reactive<OptionState>({
           <button
             :class="{'option-active': options.gender === Gender.GIRL}"
             class="option"
+            @click="options.gender = Gender.GIRL"
           >
             Girl
           </button>
@@ -71,6 +74,7 @@ const options = reactive<OptionState>({
           <button
             :class="{'option-active': options.popularity === Popularity.TRENDY}"
             class="option"
+            @click="options.popularity = Popularity.TRENDY"
           >
             Trendy
           </button>
@@ -78,6 +82,7 @@ const options = reactive<OptionState>({
           <button
             :class="{'option-active': options.popularity === Popularity.UNIQUE}"
             class="option"
+            @click="options.popularity = Popularity.UNIQUE"
           >
             Unique
           </button>
@@ -91,6 +96,7 @@ const options = reactive<OptionState>({
           <button
             :class="{'option-active': options.length === Length.LONG}"
             class="option"
+            @click="options.length = Length.LONG"
           >
             Long
           </button>
@@ -98,6 +104,7 @@ const options = reactive<OptionState>({
           <button
             :class="{'option-active': options.length === Length.ALL}"
             class="option"
+            @click="options.length = Length.ALL"
           >
             All
           </button>
@@ -105,6 +112,7 @@ const options = reactive<OptionState>({
           <button
             :class="{'option-active': options.length === Length.SHORT}"
             class="option"
+            @click="options.length = Length.SHORT"
           >
             Short
           </button>
