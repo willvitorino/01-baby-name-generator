@@ -1,3 +1,11 @@
+<script setup>
+const options = reactive({
+  gender: 'girl',
+  popularity: 'unique',
+  length: 'short'
+})
+</script>
+
 <template>
   <div class="app-container">
     <h1>Baby Name Generator</h1>
@@ -9,15 +17,24 @@
         <h4>1) Coose a gender:</h4>
 
         <div class="option-buttons">
-          <button class="option">
+          <button
+            :class="{'option-active': options.gender === 'boy'}"
+            class="option"
+          >
             Boy
           </button>
 
-          <button class="option">
+          <button
+            :class="{'option-active': options.gender === 'unisex'}"
+            class="option"
+          >
             Unisex
           </button>
 
-          <button class="option">
+          <button
+            :class="{'option-active': options.gender === 'girl'}"
+            class="option"
+          >
             Girl
           </button>
         </div>
@@ -27,11 +44,17 @@
         <h4>2) Choose the name's popularity:</h4>
 
         <div class="option-buttons">
-          <button class="option">
+          <button
+            :class="{'option-active': options.popularity === 'trendy'}"
+            class="option"
+          >
             Trendy
           </button>
 
-          <button class="option">
+          <button
+            :class="{'option-active': options.popularity === 'unique'}"
+            class="option"
+          >
             Unique
           </button>
         </div>
@@ -41,15 +64,24 @@
         <h4>3) Choose name's length:</h4>
 
         <div class="option-buttons">
-          <button class="option">
+          <button
+            :class="{'option-active': options.length === 'long'}"
+            class="option"
+          >
             Long
           </button>
 
-          <button class="option">
+          <button
+            :class="{'option-active': options.length === 'all'}"
+            class="option"
+          >
             All
           </button>
 
-          <button class="option">
+          <button
+            :class="{'option-active': options.length === 'short'}"
+            class="option"
+          >
             Short
           </button>
         </div>
@@ -106,6 +138,11 @@
 
 .app-container .options-container .option-container .option-buttons .option:last-child {
   border-radius: 0 1rem 1rem 0;
+}
+
+.app-container .options-container .option-container .option-buttons .option.option-active {
+  background-color: rgb(249, 87, 89);
+  color: white;
 }
 </style>
 
