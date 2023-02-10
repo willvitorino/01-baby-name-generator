@@ -1,26 +1,10 @@
 <script setup lang="ts">
-
-enum Gender {
-  GIRL = 'gril',
-  BOY = 'boy',
-  UNISEX = 'unisex'
-}
-
-enum Popularity {
-  UNIQUE = 'unique',
-  TRENDY = 'trendy'
-}
-
-enum Length {
-  LONG = 'long',
-  ALL = 'all',
-  SHORT = 'short',
-}
+import { Gender, Popularity, Length, names } from '@/src/assets/data'
 
 interface OptionState {
   gender: Gender
   popularity: Popularity
-  length: string
+  length: Length
 }
 
 const options = reactive<OptionState>({
@@ -28,6 +12,8 @@ const options = reactive<OptionState>({
   popularity: Popularity.UNIQUE,
   length: Length.SHORT
 })
+
+const selectednames = ref<string[]>([])
 </script>
 
 <template>
@@ -118,7 +104,11 @@ const options = reactive<OptionState>({
           </button>
         </div>
       </div>
+
+      <button class="primary">Find Names</button>
     </div>
+
+    {{ selectednames }}
   </div>
 </template>
 
@@ -175,6 +165,17 @@ const options = reactive<OptionState>({
 .app-container .options-container .option-container .option-buttons .option.option-active {
   background-color: rgb(249, 87, 89);
   color: white;
+}
+
+.app-container .primary {
+  background-color: rgb(249, 87, 89);
+  color: white;
+  border-radius: 6.5rem;
+  border: none;
+  padding: 0.75rem 4rem;
+  font-size: 1rem;
+  margin-top: 1rem;
+  cursor: pointer;
 }
 </style>
 
