@@ -1,8 +1,32 @@
-<script setup>
-const options = reactive({
-  gender: 'girl',
-  popularity: 'unique',
-  length: 'short'
+<script setup lang="ts">
+
+enum Gender {
+  GIRL = 'gril',
+  BOY = 'boy',
+  UNISEX = 'unisex'
+}
+
+enum Popularity {
+  UNIQUE = 'unique',
+  TRENDY = 'trendy'
+}
+
+enum Length {
+  LONG = 'long',
+  ALL = 'all',
+  SHORT = 'short',
+}
+
+interface OptionState {
+  gender: Gender
+  popularity: Popularity
+  length: string
+}
+
+const options = reactive<OptionState>({
+  gender: Gender.GIRL,
+  popularity: Popularity.UNIQUE,
+  length: Length.SHORT
 })
 </script>
 
@@ -18,21 +42,21 @@ const options = reactive({
 
         <div class="option-buttons">
           <button
-            :class="{'option-active': options.gender === 'boy'}"
+            :class="{'option-active': options.gender === Gender.BOY}"
             class="option"
           >
             Boy
           </button>
 
           <button
-            :class="{'option-active': options.gender === 'unisex'}"
+            :class="{'option-active': options.gender === Gender.UNISEX}"
             class="option"
           >
             Unisex
           </button>
 
           <button
-            :class="{'option-active': options.gender === 'girl'}"
+            :class="{'option-active': options.gender === Gender.GIRL}"
             class="option"
           >
             Girl
@@ -45,14 +69,14 @@ const options = reactive({
 
         <div class="option-buttons">
           <button
-            :class="{'option-active': options.popularity === 'trendy'}"
+            :class="{'option-active': options.popularity === Popularity.TRENDY}"
             class="option"
           >
             Trendy
           </button>
 
           <button
-            :class="{'option-active': options.popularity === 'unique'}"
+            :class="{'option-active': options.popularity === Popularity.UNIQUE}"
             class="option"
           >
             Unique
@@ -65,21 +89,21 @@ const options = reactive({
 
         <div class="option-buttons">
           <button
-            :class="{'option-active': options.length === 'long'}"
+            :class="{'option-active': options.length === Length.LONG}"
             class="option"
           >
             Long
           </button>
 
           <button
-            :class="{'option-active': options.length === 'all'}"
+            :class="{'option-active': options.length === Length.ALL}"
             class="option"
           >
             All
           </button>
 
           <button
-            :class="{'option-active': options.length === 'short'}"
+            :class="{'option-active': options.length === Length.SHORT}"
             class="option"
           >
             Short
