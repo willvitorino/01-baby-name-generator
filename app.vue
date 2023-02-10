@@ -143,8 +143,8 @@ const options = reactive<OptionState>({
   background-color: rgb(2550 238, 236);
   border-radius: 2rem;
   padding: 1rem;
-  width: 95%;
-  margin: 4rem auto 0;
+  width: 90%;
+  margin: 2rem auto 0;
   text-align: center;
 }
 
