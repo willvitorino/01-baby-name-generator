@@ -14,6 +14,15 @@ const options = reactive<OptionState>({
 })
 
 const selectednames = ref<string[]>([])
+
+function handleSelectedNames() {
+  selectednames.value = names
+    .filter(name => (name.gender === options.gender))
+    .filter(name => (name.popularity === options.popularity))
+    .filter(name => ([Length.ALL, name.length].includes(options.length)))
+    .map(({ name }) => name)
+}
+
 </script>
 
 <template>
@@ -105,7 +114,12 @@ const selectednames = ref<string[]>([])
         </div>
       </div>
 
-      <button class="primary">Find Names</button>
+      <button
+        class="primary"
+        @click="handleSelectedNames"
+      >
+        Find Names
+      </button>
     </div>
 
     {{ selectednames }}
