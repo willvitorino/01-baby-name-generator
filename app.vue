@@ -122,14 +122,26 @@ function handleSelectedNames() {
       </button>
     </div>
 
-    {{ selectednames }}
+    <div class="cards-container">
+      <div
+        v-for="(name, index) in selectednames"
+        :key="`#${index}:${name}`"
+        class="card"
+      >
+        <h4>{{ name }}</h4>
+        <p>&#10006;</p>
+      </div>
+    </div>
   </div>
 </template>
 
 <style scoped>
 .app-container {
   width: 100vw;
+  max-width: 100vw;
   height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -181,7 +193,7 @@ function handleSelectedNames() {
   color: white;
 }
 
-.app-container .primary {
+.app-container .options-container .primary {
   background-color: rgb(249, 87, 89);
   color: white;
   border-radius: 6.5rem;
@@ -190,6 +202,48 @@ function handleSelectedNames() {
   font-size: 1rem;
   margin-top: 1rem;
   cursor: pointer;
+}
+
+.app-container .cards-container {
+  display: flex;
+  width: 90%;
+  margin: 2rem 0;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.app-container .cards-container .card {
+  background-color: rgb(27, 60, 138);
+  width: 28%;
+  color: white;
+  border-radius: 1rem;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+
+.app-container .cards-container .card h4 {
+  margin: 0.5rem;
+  text-align: center;
+}
+
+.app-container .cards-container .card p {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  cursor: pointer;
+  color: red;
+  margin: 0;
+  width: 1.5rem;
+  display: none;
+}
+
+.app-container .cards-container .card:hover p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>
 
