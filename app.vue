@@ -15,6 +15,29 @@ const options = reactive<OptionState>({
 
 const selectednames = ref<string[]>([])
 
+const optionsList = [
+  {
+    title: '1) Choose a gender:',
+    category: 'gender',
+    callback: (value: Gender) => (options.gender = value),
+    buttons: [Gender.BOY, Gender.GIRL, Gender.UNISEX]
+  },
+  {
+    title: '2) Choose the name\'s popularity:',
+    category: 'popularity',
+    callback: (value: Popularity) => (options.popularity = value),
+    buttons: [Popularity.TRENDY, Popularity.UNIQUE]
+  },
+  {
+    title: '3) Choose name\'s length:',
+    category: 'length',
+    callback: (value: Length) => (options.length = value),
+    buttons: [Length.LONG, Length.SHORT, Length.ALL]
+  }
+]
+
+type OptionsKey = keyof typeof options;
+
 function handleSelectedNames() {
   selectednames.value = names
     .filter(name => (name.gender === options.gender))
@@ -32,87 +55,12 @@ function handleSelectedNames() {
     <p>Choose your options and click the "Find Names" buttom below.</p>
 
     <div class="options-container">
-      <div class="option-container">
-        <h4>1) Coose a gender:</h4>
-
-        <div class="option-buttons">
-          <button
-            :class="{'option-active': options.gender === Gender.BOY}"
-            class="option"
-            @click="options.gender = Gender.BOY"
-          >
-            Boy
-          </button>
-
-          <button
-            :class="{'option-active': options.gender === Gender.UNISEX}"
-            class="option"
-            @click="options.gender = Gender.UNISEX"
-          >
-            Unisex
-          </button>
-
-          <button
-            :class="{'option-active': options.gender === Gender.GIRL}"
-            class="option"
-            @click="options.gender = Gender.GIRL"
-          >
-            Girl
-          </button>
-        </div>
-      </div>
-
-      <div class="option-container">
-        <h4>2) Choose the name's popularity:</h4>
-
-        <div class="option-buttons">
-          <button
-            :class="{'option-active': options.popularity === Popularity.TRENDY}"
-            class="option"
-            @click="options.popularity = Popularity.TRENDY"
-          >
-            Trendy
-          </button>
-
-          <button
-            :class="{'option-active': options.popularity === Popularity.UNIQUE}"
-            class="option"
-            @click="options.popularity = Popularity.UNIQUE"
-          >
-            Unique
-          </button>
-        </div>
-      </div>
-
-      <div class="option-container">
-        <h4>3) Choose name's length:</h4>
-
-        <div class="option-buttons">
-          <button
-            :class="{'option-active': options.length === Length.LONG}"
-            class="option"
-            @click="options.length = Length.LONG"
-          >
-            Long
-          </button>
-
-          <button
-            :class="{'option-active': options.length === Length.ALL}"
-            class="option"
-            @click="options.length = Length.ALL"
-          >
-            All
-          </button>
-
-          <button
-            :class="{'option-active': options.length === Length.SHORT}"
-            class="option"
-            @click="options.length = Length.SHORT"
-          >
-            Short
-          </button>
-        </div>
-      </div>
+      <Option
+        v-for="option in optionsList"
+        :key="option.title"
+        :option="option"
+        :value="options[option.category as OptionsKey]"
+      />
 
       <button
         class="primary"
@@ -162,35 +110,6 @@ function handleSelectedNames() {
   width: 90%;
   margin: 2rem auto 0;
   text-align: center;
-}
-
-.app-container .options-container .option-container {
-  margin-bottom: 2rem;
-}
-
-.app-container .options-container .option-container .option-buttons .option {
-  background-color: #fff;
-  outline: 0.15rem solid rgb(249, 87, 89);
-  border: none;
-  padding: 0.75rem;
-  width: 12rem;
-  font-size: 1rem;
-  color: rgb(27, 60, 138);
-  cursor: pointer;
-  font-weight: 200;
-}
-
-.app-container .options-container .option-container .option-buttons .option:first-child {
-  border-radius: 1rem 0 0 1rem;
-}
-
-.app-container .options-container .option-container .option-buttons .option:last-child {
-  border-radius: 0 1rem 1rem 0;
-}
-
-.app-container .options-container .option-container .option-buttons .option.option-active {
-  background-color: rgb(249, 87, 89);
-  color: white;
 }
 
 .app-container .options-container .primary {
