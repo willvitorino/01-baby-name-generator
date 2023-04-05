@@ -71,14 +71,18 @@ function handleSelectedNames() {
     </div>
 
     <div class="cards-container">
-      <div
+      <CardName
         v-for="(name, index) in selectednames"
         :key="`#${index}:${name}`"
+        :name="name"
+      />
+      <!-- <div
+        
         class="card"
       >
         <h4>{{ name }}</h4>
         <p>&#10006;</p>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -130,39 +134,6 @@ function handleSelectedNames() {
   gap: 2rem;
   flex-wrap: wrap;
   justify-content: space-around;
-}
-
-.app-container .cards-container .card {
-  background-color: rgb(27, 60, 138);
-  width: 28%;
-  color: white;
-  border-radius: 1rem;
-  padding: 0;
-  margin: 0;
-  position: relative;
-}
-
-.app-container .cards-container .card h4 {
-  margin: 0.5rem;
-  text-align: center;
-}
-
-.app-container .cards-container .card p {
-  position: absolute;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  cursor: pointer;
-  color: red;
-  margin: 0;
-  width: 1.5rem;
-  display: none;
-}
-
-.app-container .cards-container .card:hover p {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 </style>
 
