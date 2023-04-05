@@ -4,12 +4,17 @@ interface NameProps {
 }
 
 defineProps<NameProps>()
+const emits = defineEmits(['remove'])
+
+const handleRemove = () => {
+  emits('remove')
+}
 </script>
 
 <template>
   <div class="card">
     <h4>{{ name }}</h4>
-    <p>&#10006;</p>
+    <p @click="handleRemove">&#10006;</p>
   </div>
 </template>
 

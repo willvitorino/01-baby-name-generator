@@ -46,6 +46,9 @@ function handleSelectedNames() {
     .map(({ name }) => name)
 }
 
+function handleRemoveName(index: number) {
+  selectednames.value.splice(index, 1)
+}
 </script>
 
 <template>
@@ -75,14 +78,8 @@ function handleSelectedNames() {
         v-for="(name, index) in selectednames"
         :key="`#${index}:${name}`"
         :name="name"
+        @remove="() => handleRemoveName(index)"
       />
-      <!-- <div
-        
-        class="card"
-      >
-        <h4>{{ name }}</h4>
-        <p>&#10006;</p>
-      </div> -->
     </div>
   </div>
 </template>
